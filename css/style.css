@@ -8,7 +8,7 @@ body {
 	position: fixed;
 	width: 100%;
 	z-index: 100;
-	font-size: 18px;
+	font-size: 1.2em;
 	font-family: 'Exo 2', sans-serif;
 	background-color: #cecdd9;
 	color: #514b90;
@@ -38,31 +38,31 @@ body {
 }
 .menu ul.top-menu > li {
 	padding-left: 10px;
-	font-size: 20px;
+	font-size: 1.2em;
 }
 
 .androit-green { color: green; }
 .androit-white { color: white; }
 
-.menu ul.top-menu > li > a {
+.menu ul > li > a {
 	color: #514b90;
-	transition: color 0.45s ease-in-out;
+	transition: color 0.5s ease-in-out;
 }
-.menu ul.top-menu > li:hover > a {
+.menu ul > li:hover > a {
 	color: #0e0939;
-	transition: color 0.45s ease-in-out;
+	transition: color 0.5s ease-in-out;
 }
 
 .dropdown-menu {
 	list-style: none;
 	position: absolute;
 	left: 0;
-	width: 200px;
+	/*width: 200px;*/
 	visibility: hidden;
 	backface-visibility: hidden;
 	opacity: 0;
 	z-index: 200;
-	font-size: 18px;
+	font-size: 1.2em;
 	background-color: #aea9c5;
 	border-radius: 5px;
 	transform-origin: left top;
@@ -77,9 +77,45 @@ body {
 	opacity: 1;
 	transform: perspective(600px) rotateX(0deg);
 }
+.arrow-down {
+	margin-bottom: 5px;
+	border: solid #514b90;
+	border-width: 0px 3px 3px 0px;
+	display: inline-block;
+	padding: 3px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
 
 .main-content {
-	padding-top: 40px;
-	font-size: 18px;
+	/*padding-top: 40px;*/
+	padding-top: 2.4em;
+	font-size: 1em;
 	font-family: sans-serif;
+}
+
+.user-info-wrapper {
+	padding-top: 2.8em;
+	display: flex;
+	flex-direction: row;
+}
+.user-info {
+	display: flex;
+	flex-direction: row;
+}
+.user-info-item {
+	margin: 10px;
+}
+.card {
+	border: 2px solid #bbb;
+	border-radius: 30px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+	transition: box-shadow 0.3s ease-in-out 0s;
+}
+.card:hover {
+	box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+h2 {
+	margin-bottom: 0;
 }
