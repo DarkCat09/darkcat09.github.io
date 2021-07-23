@@ -2,48 +2,116 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>Сайт DarkCat09</title>
+		<title>DarkCat09's Site</title>
 		<link rel="stylesheet" href="css/style.css" />
+		<!-- Cool Animations! -->
+		<link rel="stylesheet" href="css/tuesday.min.css" />
+		<!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/a966b160a8.js" crossorigin="anonymous"></script>
 	</head>
-	<body>
+	<body onload="setupUi();">
+		<!-- Top Menu -->
 		<nav class="menu">
 			<ul class="top-menu">
-				<li><a href="#">(Логотип) Главная</a></li>
-				<li><a href="#about-me">Обо мне</a></li>
-				<li id="myproj-item">
-					<a href="https://github.com/DarkCat09">Проекты</a> <i class="arrow-down"></i>
-					<ul class="dropdown-menu">
-						<li><a href="https://github.com/DarkCat09/AchSmartHome">AchSmartHome</a></li>
-						<li><a href="https://github.com/IngCenter/SMM">SMM</a></li>
-						<li><a href="https://github.com/DarkCat09/RegFileMaker">RegFileMaker</a></li>
-						<li><a href="https://github.com/DarkCat09/MtkFwTools">MtkFwTools</a></li>
-						<li><a href="https://github.com/IngCenter/FallSimulator">FallSimulator</a></li>
-						<li><a href="https://github.com/DarkCat09/PassGen">PassGen</a></li>
-						<li><a href="https://github.com/DarkCat09/Cash_Machine">Cash_Machine</a></li>
-						<li><a href="https://github.com/DarkCat09/RRJS">RRJS</a></li>
-					</ul>
+				<!-- My Logo, drawn in Inkscape -->
+				<li id="item-logo" title="DarkCat09">
+					<img src="logo/dc09logo.svg" alt="DC09" class="logo" />
 				</li>
-				<li id="androit-item"><a href="#"><span class="androit-green">Andro</span><span class="androit-white">IT</span></a></li>
-				<li><a href="http://minespace-world.000webhostapp.com/">Minecraft</a></li>
+				<!-- About Me Pop-up Card -->
+				<li id="item-about">
+					<a href="javascript:void(0);" onclick="showAboutCard(event);" title="About Me">
+						<i class="fas fa-user"></i>
+					</a>
+				</li>
+				<!-- My Profile on GitHub -->
+				<li id="item-github">
+					<a href="https://github.com/DarkCat09" title="GitHub">
+						<i class="fab fa-github"></i>
+					</a>
+				</li>
+				<!-- My Discord Nick#Tag and My Bots -->
+				<li id="item-discord">
+					<a href="javascript:void(0);" onclick="showDiscordSubmenu(event);" title="Discord">
+						<i class="fab fa-discord"></i>
+					</a>
+					<nav class="submenu context-menu-like popup">
+						<li>
+							<a href="javascript:void(0);" onclick="copyDiscordTag(event);">DarkCat09#5587</a>
+						</li>
+						<li title="Plays music in the voice channel">
+							<a href="https://github.com/DarkCat09/catmusic-discord-bot">CatMusic Bot</a>
+						</li>
+						<li title="Processes an attached image">
+							<a href="https://github.com/DarkCat09/pictools-discord-bot">PicTools Bot</a>
+						</li>
+						<li title="Downloads torrent-files from Rutor without VPN">
+							<a href="https://github.com/DarkCat09/getp2p-discord-bot">GetP2P Bot</a>
+						</li>
+						<li title="Scans a file or a URL on VirusTotal">
+							<a href="https://github.com/DarkCat09/vtdiscord-bot">VtDiscord Bot</a>
+						</li>
+					</nav>
+				</li>
+				<!-- E-mail -->
+				<li id="item-mail">
+					<a href="mailto:aacd0709@mail.ru?subject=Hello from Github.io" title="Send an email">
+						<i class="fas fa-envelope"></i>
+					</a>
+				</li>
+				<li id="item-youtube">
+					<a href="https://youtube.com/" title="My YouTube Channel (coming soon)">
+						<i class="fab fa-youtube"></i>
+					</a>
+				</li>
+				<li id="item-minecraft">
+					<a href="#">
+						<span class="minecraft-text">MC</span>
+					</a>
+				</li>
 			</ul>
 		</nav>
-		<div class="main-content">
-			<div class="user-info-wrapper">
-				<div class="card">
-					<div class="user-info">
-						<div class="avatar user-info-item">
-							<img src="https://avatars.githubusercontent.com/u/50486086?v=4" />
-						</div>
-						<div class="about user-info-item">
-							<h2>DarkCat09</h2>
-							<b>Чечкенёв Андрей</b>
-							<br />
-							<span class="age user-info-field">Возраст: <span id="age-js"></span> лет</span>
-						</div>
-					</div>
-				</div>
+		<!-- The Universe -->
+		<div class="space-wrapper">
+			<!-- The Space -->
+			<div class="space-obj">
+				<!-- Space Object -->
+				<img src="img/earth.png" alt="Can't load image" />
 			</div>
 		</div>
+		<!-- "Copied!" Message -->
+		<div class="msg-wrapper card-wrapper context-menu-like popup">
+			<div class="msg-card card">
+				<h1>Copied!</h1>
+			</div>
+		</div>
+		<!-- About Me -->
+		<div class="about-card-wrapper card-wrapper context-menu-like popup">
+			<div class="about-card card">
+				<h1>Hi! I'm Andrew</h1>
+				<h2>@DarkCat09</h2>
+			</div>
+		</div>
+		<!-- Context Menu -->
+		<div class="context-menu-like context-menu popup">
+			<ul>
+				<li>
+					<a href="javascript:void(0);" onclick="changePicture(event, 0);">
+						<i class="fas fa-globe-americas"></i> Earth
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" onclick="changePicture(event, 1);">
+						<i class="fas fa-moon"></i> Moon
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" onclick="changePicture(event, 2);">
+						<i class="fas fa-sun"></i> Sun
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- JavaScript -->
 		<script src="js/script.js"></script>
 	</body>
 </html>

@@ -1,121 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+@font-face {
+	font-family: 'Minecraft';
+	src: url('../fonts/minecraft.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
 
 body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #001;
+	font-family: 'Montserrat', sans-serif;
+}
+
+img.logo {
+	width: 4rem;
+	cursor: default;
+	pointer-events: none;
 }
 
 .menu {
-	position: fixed;
-	width: 100%;
-	z-index: 100;
-	font-size: 1.2em;
-	font-family: 'Exo 2', sans-serif;
-	background-color: #cecdd9;
-	color: #514b90;
 	top: 0;
 	left: 0;
+	margin: 10px;
+	border-radius: 5px;
+	position: fixed;
+	background-color: #514b9066;
+	z-index: 998;
 }
-.menu ul {
-	list-style: none;
+.top-menu {
 	margin: 0;
 	padding: 0;
-	box-shadow: 0 5px 5px gray;
-}
-.menu ul li {
-	color: #514b90;
-	display: inline-block;
-	position: relative;
-	text-transform: uppercase;
-	padding-top: 5px;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-bottom: 5px;
-	transition: color 0.45s ease-in-out;
-}
-.menu ul li a {
-	color: #514b90;
-	text-decoration: none;
-}
-.menu ul.top-menu > li {
-	padding-left: 10px;
-	font-size: 1.2em;
-}
-
-.androit-green { color: green; }
-.androit-white { color: white; }
-
-.menu ul > li > a {
-	color: #514b90;
-	transition: color 0.5s ease-in-out;
-}
-.menu ul > li:hover > a {
-	color: #0e0939;
-	transition: color 0.5s ease-in-out;
-}
-
-.dropdown-menu {
 	list-style: none;
-	position: absolute;
-	left: 0;
-	/*width: 200px;*/
-	visibility: hidden;
-	backface-visibility: hidden;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+}
+.top-menu li {
+	padding: 10px;
+}
+.top-menu li a {
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.8rem;
+}
+
+.context-menu-like {
+	margin: 0;
+	padding: 0;
+	/*display: none;*/
 	opacity: 0;
-	z-index: 200;
-	font-size: 1.2em;
-	background-color: #aea9c5;
+	pointer-events: none;
+	position: absolute;
 	border-radius: 5px;
-	transform-origin: left top;
-	transform: perspective(600px) rotateX(-90deg);
-	transition: 0.6s ease-in-out;
+	background-color: #222222d4;
 }
-.dropdown-menu li {
-	display: block !important;
+.context-menu-like ul {
+	margin: 0;
+	padding: 0;
 }
-.top-menu > #myproj-item:hover .dropdown-menu {
-	visibility: visible;
-	opacity: 1;
-	transform: perspective(600px) rotateX(0deg);
+.context-menu-like li {
+	padding: 5px;
+	display: block;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.3rem;
 }
-.arrow-down {
-	margin-bottom: 5px;
-	border: solid #514b90;
-	border-width: 0px 3px 3px 0px;
-	display: inline-block;
-	padding: 3px;
-	transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
+.context-menu-like li:hover {
+	background-color: #444;
+}
+.context-menu-like li a {
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.3rem;
+}
+.submenu {
+	left: 0;
+	margin-top: 5px;
+}
+.submenu:before {
+	content: "";
+	border: solid transparent;
+	position: absolute;
+	left: 8px;
+	bottom: 100%;
+	border-bottom-color: #222;
+	border-width: 9px;
+	margin-left: 0;
 }
 
-.main-content {
-	/*padding-top: 40px;*/
-	padding-top: 2.4em;
-	font-size: 1em;
-	font-family: sans-serif;
+#item-minecraft {
+	padding-bottom: 12px;
+}
+span.minecraft-text {
+	font-family: 'Minecraft';
+	font-size: 1.25rem;
 }
 
-.user-info-wrapper {
-	padding-top: 2.8em;
-	display: flex;
-	flex-direction: row;
+.popup {
+	z-index: 999;
 }
-.user-info {
-	display: flex;
-	flex-direction: row;
+
+.card-wrapper {
+	position: absolute;
+	border-radius: 10px;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
 }
-.user-info-item {
-	margin: 10px;
+.card { margin: 10px; }
+
+.about-card-wrapper {
+	margin-top: 18%;
+	margin-left: 65%;
 }
-.card {
-	border: 2px solid #bbb;
-	border-radius: 30px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-	transition: box-shadow 0.3s ease-in-out 0s;
+.msg-wrapper {
+	margin-top: 5%;
+	margin-left: 65%;
 }
-.card:hover {
-	box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+.card h1 {
+	margin: 0 0 0 0;
+	padding: 0;
+	font-size: 1.8em;
+	font-weight: 700;
 }
-h2 {
-	margin-bottom: 0;
+.card h2 {
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 1.3em;
+	font-weight: 500;
+}
+
+.space-obj {
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	z-index: 997;
+}
+.space-obj > img {
+	/* 360 degrees in 20 minutes (instead of 23 hours) */
+	animation: rotate 1200s linear 0s infinite normal;
+
+	/* unselectable */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@keyframes rotate {
+	0%   { transform: rotate(0deg);   }
+	100% { transform: rotate(360deg); }
 }
