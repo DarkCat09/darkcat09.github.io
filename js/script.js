@@ -1,4 +1,5 @@
 function setupUi() {
+	// Context Menu
 	document.body.addEventListener('contextmenu', (e) => {
 		var menu = document.querySelector('.context-menu');
 		menu.style.top = e.pageY + 'px';
@@ -7,12 +8,33 @@ function setupUi() {
 		e.preventDefault();
 		return false;
 	});
+	// Hide Pop-ups
 	document.body.addEventListener('click', () => {
 		var popups = document.querySelectorAll('.popup');
 		for (var i = 0; i < popups.length; i++) {
 			togglePopup(popups[i], 0);
 		}
 	});
+	// Initialize Hints
+	var itemswh = document.querySelectorAll('.withhint');
+	for (var j = 0; j < itemswh.length; j++) {
+		itemswh[j].addEventListener('mouseover',  showHint);
+		//itemswh[j].addEventListener('mousemove',  showHint);
+		itemswh[j].addEventListener('mouseleave', hideHint);
+	}
+};
+
+function initStars() {
+	var colors = ['#aaa','#ddd','#eee','#fff'];
+	var canvas = document.querySelector('canvas#stars');
+	var w = canvas.width;
+	var h = canvas.height;
+	var ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, w, h);
+	for (var star = 0; star < 200; star++) {
+		ctx.fillStyle = colors[Math.floor(Math.random()*colors.length)];
+		ctx.fillRect(Math.round(Math.random()*w), Math.round(Math.random()*h), 1, 1);
+	}
 };
 
 function togglePopup(el, mode=1) {
@@ -65,7 +87,7 @@ function copyDiscordTag(e) {
 	togglePopup(document.querySelector('.msg-wrapper'));
 	setTimeout(() => {
 		togglePopup(document.querySelector('.msg-wrapper'), 0);
-	}, 3000);
+	}, 1500);
 	e.stopPropagation();
 };
 
@@ -73,14 +95,34 @@ function changePicture(e, num) {
 	var img = document.querySelector('.space-obj > img');
 	switch (num) {
 		case 0:
-			img.src = 'img/earth.png';
+			img.src = 'img/earth.gif';
 			break;
 		case 1:
-			img.src = 'img/moon.png';
+			img.src = 'img/moon.gif';
 			break;
 		case 2:
-			img.src = 'img/sun.png';
+			img.src = 'img/sun.gif';
 			break;
 	}
 	togglePopup(document.querySelector('.context-menu'));
+};
+
+function spaceObjSpeed(spd) {
+	document.querySelector('.space-obj>img').style.animationDuration = `${spd}s`;
+};
+
+function showHint(e) {
+	var elid = e.target.id;
+	var hintid = 'hint-' + (elid.startsWith('item-') ? elid.slice(5) : 'elem');
+	var hintel = document.getElementById(hintid);
+	if (hintel)
+		hintel.style.opacity = '1';
+};
+
+function hideHint(e) {
+	var elid = e.target.id;
+	var hintid = 'hint-' + (elid.startsWith('item-') ? elid.slice(5) : 'elem');
+	var hintel = document.getElementById(hintid);
+	if (hintel)
+		hintel.style.opacity = '0';
 };

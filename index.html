@@ -9,7 +9,7 @@
 		<!-- Font Awesome -->
 		<script src="https://kit.fontawesome.com/a966b160a8.js" crossorigin="anonymous"></script>
 	</head>
-	<body onload="setupUi();">
+	<body onload="setupUi();initStars();">
 		<!-- Top Menu -->
 		<nav class="menu">
 			<ul class="top-menu">
@@ -18,52 +18,52 @@
 					<img src="logo/dc09logo.svg" alt="DC09" class="logo" />
 				</li>
 				<!-- About Me Pop-up Card -->
-				<li id="item-about">
-					<a href="javascript:void(0);" onclick="showAboutCard(event);" title="About Me">
+				<li id="item-about" class="withhint">
+					<a href="javascript:void(0);" onclick="showAboutCard(event);">
 						<i class="fas fa-user"></i>
 					</a>
 				</li>
 				<!-- My Profile on GitHub -->
-				<li id="item-github">
-					<a href="https://github.com/DarkCat09" title="GitHub">
+				<li id="item-github" class="withhint">
+					<a href="https://github.com/DarkCat09">
 						<i class="fab fa-github"></i>
 					</a>
 				</li>
 				<!-- My Discord Nick#Tag and My Bots -->
-				<li id="item-discord">
-					<a href="javascript:void(0);" onclick="showDiscordSubmenu(event);" title="Discord">
+				<li id="item-discord" class="withhint">
+					<a href="javascript:void(0);" onclick="showDiscordSubmenu(event);">
 						<i class="fab fa-discord"></i>
 					</a>
 					<nav class="submenu context-menu-like popup">
-						<li>
+						<li id="item-dscopy" class="withhint">
 							<a href="javascript:void(0);" onclick="copyDiscordTag(event);">DarkCat09#5587</a>
 						</li>
-						<li title="Plays music in the voice channel">
+						<li id="item-dscm" class="withhint">
 							<a href="https://github.com/DarkCat09/catmusic-discord-bot">CatMusic Bot</a>
 						</li>
-						<li title="Processes an attached image">
+						<li id="item-dspt" class="withhint">
 							<a href="https://github.com/DarkCat09/pictools-discord-bot">PicTools Bot</a>
 						</li>
-						<li title="Downloads torrent-files from Rutor without VPN">
+						<li id="item-dsgp" class="withhint">
 							<a href="https://github.com/DarkCat09/getp2p-discord-bot">GetP2P Bot</a>
 						</li>
-						<li title="Scans a file or a URL on VirusTotal">
+						<li id="item-dsvt" class="withhint">
 							<a href="https://github.com/DarkCat09/vtdiscord-bot">VtDiscord Bot</a>
 						</li>
 					</nav>
 				</li>
 				<!-- E-mail -->
-				<li id="item-mail">
-					<a href="mailto:aacd0709@mail.ru?subject=Hello from Github.io" title="Send an email">
+				<li id="item-email" class="withhint">
+					<a href="mailto:aacd0709@mail.ru?subject=Hello from GitHub!">
 						<i class="fas fa-envelope"></i>
 					</a>
 				</li>
-				<li id="item-youtube">
-					<a href="https://youtube.com/" title="My YouTube Channel (coming soon)">
+				<li id="item-youtube" class="withhint">
+					<a href="https://youtube.com/">
 						<i class="fab fa-youtube"></i>
 					</a>
 				</li>
-				<li id="item-minecraft">
+				<li id="item-minecraft" class="withhint">
 					<a href="#">
 						<span class="minecraft-text">MC</span>
 					</a>
@@ -74,10 +74,24 @@
 		<div class="space-wrapper">
 			<!-- The Space -->
 			<div class="space-obj">
+				<!-- Stars -->
+				<canvas id="stars"></canvas>
 				<!-- Space Object -->
-				<img src="img/earth.png" alt="Can't load image" />
+				<img src="img/earth.gif" alt="Can't load image" />
 			</div>
 		</div>
+		<!-- Hints -->
+		<div class="hint" id="hint-about"><span>About me</span></div>
+		<div class="hint" id="hint-github"><span>GitHub</span></div>
+		<div class="hint" id="hint-discord"><span>Discord</span></div>
+		<div class="hint" id="hint-dscopy"><span>Copy my nickname and tag</span></div>
+		<div class="hint" id="hint-dscm"><span>Plays music in the voice channel</span></div>
+		<div class="hint" id="hint-dspt"><span>Processes an attached image</span></div>
+		<div class="hint" id="hint-dsgp"><span>Downloads torrent-files from Rutor without VPN</span></div>
+		<div class="hint" id="hint-dsvt"><span>Scans a file or a URL on VirusTotal</span></div>
+		<div class="hint" id="hint-email"><span>Send an email</span></div>
+		<div class="hint" id="hint-youtube"><span>My Youtube channel (coming soon)</span></div>
+		<div class="hint" id="hint-minecraft"><span>Minecraft</span></div>
 		<!-- "Copied!" Message -->
 		<div class="msg-wrapper card-wrapper context-menu-like popup">
 			<div class="msg-card card">
@@ -108,6 +122,11 @@
 					<a href="javascript:void(0);" onclick="changePicture(event, 2);">
 						<i class="fas fa-sun"></i> Sun
 					</a>
+				</li>
+				<li>
+					<i class="fas fa-wrench"></i> Speed:
+					<input type="range" min="30" max="1200" step="30" value="480"
+					oninput="spaceObjSpeed(this.value);" onclick="event.stopPropagation();" />
 				</li>
 			</ul>
 		</div>
